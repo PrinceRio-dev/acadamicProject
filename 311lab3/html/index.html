@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,18 +58,25 @@ button {
 </style>
 
 <script>
+//this function is for serevr2, we making an XMLHttpRequest object first
 function statsServerTwo() {
   var xhttp = new XMLHttpRequest();
+  //sending request to the web browser
   xhttp.onreadystatechange = function() {
+    //server2 will process this request
     if (this.readyState == 4 && this.status == 200) {
+     //sending response back to the web page where id is demo 
     document.getElementById("demo").innerHTML =
     this.responseText;
     }
   };
+  //we want to send a request to localhost:8001
   xhttp.open("GET", "http://localhost:8001/", true);
+  //this will send the request
   xhttp.send();
 }
 
+//this function is for serevr1, we making an XMLHttpRequest object first
 function statsServerOne() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -76,10 +85,13 @@ function statsServerOne() {
     this.responseText;
     }
   };
+  //we want to send a request to localhost:8000
   xhttp.open("GET", "http://localhost:8000/", true);
+  //this will send the request
   xhttp.send();
 }
 
+ //setting the interval which will update the numbers every one second and this number was taken from serevr1
 setInterval('statsServerOne()', 1000);
 
 </script>
