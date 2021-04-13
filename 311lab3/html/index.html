@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  background-image: url('p1.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+h3{
+  text-align: center;
+}
+
+h1{
+  font-style: italic;
+  font-family:monospace;
+}
+
+main {
+  text-align:center;
+}
+button {
+  background-color:palegreen;
+  border: 2px solid black;
+  padding: 10px 10px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top:25px;
+}
+
+
+#demo {
+  background-color:lightpink;
+  border: 2px solid black;
+  width:10%;
+  margin:auto;
+  margin-top:25px;
+  text-align:center;
+  padding: 20px 10px;
+  font-size: large;
+}
+
+#demo1 {
+  background-color:rgba(240, 128, 128, 0.925);
+  border: 2px solid black;
+  width:10%;
+  margin:auto;
+  margin-top:25px;
+  text-align:center;
+  padding: 20px 10px;
+  font-size: large;
+}
+</style>
+
+<script>
+function statsServerTwo() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    document.getElementById("demo").innerHTML =
+    this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://localhost:8001/", true);
+  xhttp.send();
+}
+
+function statsServerOne() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    document.getElementById("demo1").innerHTML =
+    this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://localhost:8000/", true);
+  xhttp.send();
+}
+
+setInterval('statsServerOne()', 1000);
+
+</script>
+</head>
+<body>
+  
+<main>
+<h1>*** Welocme to Statistics Generator Page ***</h1>
+<br>
+<h3>To see that how much US$ is lost by Jeff Bezos in every second beacuse of virus,</h2>
+<h3>Please click on the given button :)</h2>
+<button type="button" onclick="statsServerTwo()">Show Stats & Time</button>
+</main>
+<div id="demo">
+  <p></p>
+</div>
+<br>
+<br>
+<br>
+<h3>The below statistics shows that how much US$ is made by Jeff Bezos in every second :)</h2>
+<div id="demo1">
+  <p></p>
+</div>
+
+</body>
+</html>
